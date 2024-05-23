@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Systecx.Trading.Data.DbContext;
+using Systecx.Trading.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +27,9 @@ namespace Systecx.Trading.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            object value = services.AddDbContext<ApplicationDbContext>(options =>
-       options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-                        new MySqlServerVersion(new Version(8, 0, 21))));
+            services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

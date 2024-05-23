@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Systecx.Trading.Services.Service
+namespace Systecx.Trading.Services.Service.Implementation
 {
     internal class SupplierService
     {
